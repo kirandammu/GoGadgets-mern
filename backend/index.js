@@ -11,7 +11,7 @@ import addressRoute from './routes/addressRoute.js'
 
 
 const app = express()
-const port = process.env.PORT || 4500
+const port = 'https://gogadgets-mern.onrender.com' || 4500
 
 //middlewares
 app.use(express.json())
