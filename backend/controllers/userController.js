@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt'
 //register --  /user/register
 export const register = async(req,res)=>{
     try {
-        const {name, email, password} = req.body
+        const {name, email, password, role} = req.body
         if(!name || !email || !password){
             res.json({message:'All fields required'})
         }
@@ -16,7 +16,7 @@ export const register = async(req,res)=>{
         }
         const hashpassword = await bcrypt.hash(password, 10)
 
-        const user = User.create({name,email,password:hashpassword})
+        const user = User.create({name,email,password:hashpassword, role})
 
         const token = jwt.sign({userId:user.id},process.env.JWT_SECRET, {expiresIn:'1d'})
 
@@ -36,7 +36,7 @@ export const register = async(req,res)=>{
 //login --  /user/login
 export const login = async (req,res)=>{
     try {
-        const {email, password}=req.body
+        const {email, password, role}=req.body
     if(!email || !password){
         res.json({message:'All fields required'})
     }
@@ -62,8 +62,9 @@ export const login = async (req,res)=>{
 
 //authUser -- /user/isAuth
 export const isAuth = async (req,res)=>{
+    const user = req.user
     try{
-        res.json(req.user)
+        res.json(user)
     }catch(error){
         console.log(error.message)
         res.json({success:false, message:error.message})

@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Footer from './components/Footer'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Login from './components/Login'
 import Error from './pages/Error'
-import { useAppContext } from './context/Context'
 import Products from './pages/Products'
 import ProductCategory from './pages/ProductCategory'
 import Product from './components/Product'
@@ -16,16 +15,24 @@ import AddProduct from './pages/seller/AddProduct'
 import ProductList from './pages/seller/ProductList'
 import Orders from './pages/seller/Orders'
 import Contact from './pages/Contact'
-import { AiOutlineLoading } from "react-icons/ai";
+import useAppStore from './context/Zustand'
+import CheckAuth from './common/CheckAuth'
 
 const App = () => {
+  
 
-  const{showUser, seller} = useAppContext()
+  const{showUser, user, seller, fetchProduct, fetchUser} = useAppStore()
   const [loading, setLoading] = useState(true)
 
   const isSellerPath = useLocation().pathname.includes('seller')
+  console.log(user)
 
- 
+
+  useEffect(() => {
+    fetchUser()
+    fetchProduct()
+  }, [])
+
 
   return   (
     <div>
@@ -40,7 +47,7 @@ const App = () => {
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/products/:category' element={<ProductCategory/>}/>
           <Route path='/products/:category/:id' element={<Product/>}/>
-          <Route path='/seller' element={seller?<Seller/>:<SellerLogin/>}>
+          <Route path='/seller' element={<CheckAuth seller={seller} ><Seller/></CheckAuth>}>
               <Route index element={seller? <AddProduct/>: null}/>
               <Route path='list' element={<ProductList/>}/>
               <Route path='orders' element={<Orders/>}/>   

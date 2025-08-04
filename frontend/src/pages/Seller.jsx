@@ -1,12 +1,12 @@
 import React from 'react'
 import { assets } from '../assets/assets';
 import { NavLink, Link, Outlet } from 'react-router-dom';
-import { useAppContext } from '../context/Context';
 import toast from 'react-hot-toast';
+import useAppStore from '../context/Zustand';
 
 const Seller = () => {
 
-    const {setSeller, axios, navigate} = useAppContext()
+    const {setSeller, axios, navigate} = useAppStore()
 
     const logout =async (e)=>{
         try {
@@ -32,7 +32,11 @@ const Seller = () => {
     return (
         <>
             <div className="flex items-center justify-between px-4 md:px-8 border-b border-gray-300 py-3 bg-white ">
-                <Link to={'/'}><img src={assets.logo}/></Link>
+                <Link to={'/'}>
+                <div className='flex items-end flex-col mx-auto w-40'>
+                        <div className='font-semibold text-2xl uppercase text-[red]'>Go <span className='text-gray-600'>Gadgets</span></div>
+                        <span className='w-26 h-0.5 bg-black'></span>        
+                </div> </Link>
                 <div className="flex items-center gap-5 text-gray-500">
                     <p>Hi! Dammu</p>
                     <button onClick={logout} className='border bg-black text-white cursor-pointer rounded text-sm px-4 py-1'>Logout</button>

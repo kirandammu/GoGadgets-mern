@@ -18,12 +18,12 @@ const Hero = () => {
   }, [images.length]); // Re-run effect if images array changes
 
   return (
-    <div className="relative w-full h-28 md:h-96 overflow-hidden">
+    <div className="relative w-full h-28 md:h-80 mx-auto overflow-hidden">
       {/* Slides container */}
       <div className="flex h-full transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {images.map((image, index) => (
           <div key={index} className="w-full flex-shrink-0">
-            <img src={image} alt={`Slide ${index + 1}`} className="w-full h-full object-cover rounded-md" />
+            <img src={image} alt={`Slide ${index + 1}`} className="w-full h-full object-cover rounded-md overflow-hidden" />
           </div>
         ))}
       </div>
@@ -31,7 +31,7 @@ const Hero = () => {
       {/* Navigation dots */}
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
         {images.map((_, index) => (
-          <button key={index} onClick={() => setCurrentIndex(index)} className={`w-1 h-1 md:w-3 md:h-3 rounded-full ${index === currentIndex ? 'bg-white' : 'bg-gray-400'}`} aria-label={`Go to slide ${index + 1}`}/>
+          <button key={index} onClick={() => setCurrentIndex(index)} className={`w-0.5 h-0.5 md:w-2 md:h-2 rounded-full ${index === currentIndex ? 'bg-[red]' : 'bg-white'}`} aria-label={`Go to slide ${index + 1}`}/>
         ))}
       </div>
     </div>

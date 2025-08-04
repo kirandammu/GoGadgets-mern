@@ -7,7 +7,7 @@ const Item = ({product}) => {
 
   return (
     <div onClick={()=>{navigate(`/products/${String(product.category).toLowerCase()}/${product._id}`); window.scrollTo({top: 0, behavior: 'smooth'})}} className="bg-white cursor-pointer w-50 rounded-md pb-4 overflow-hidden border border-gray-500/30 shadow-2xl">
-        <div className='w-56 h-48 overflow-hidden flex items-center justify-center md:w-52 px-1'><img className=" border-b w-[90%] h-[85%] p-2 border-gray-200" src={product.images?.[0]}/></div>
+        <div className='w-50 h-48 overflow-hidden flex items-center justify-center md:w-50 mx-auto'><img className=" border-b rounded w-full h-[90%] px-1 border-gray-200" src={product.images?.[0]}/></div>
         <div className="flex flex-col items-start px-3">
             <p className="text-gray-500 text-sm mt-2">{product.category}</p>
             <p className="font-semibold line-clamp-2 h-12 ">{product.name}</p>

@@ -83,7 +83,6 @@ const Context = ({children}) => {
     const fetchProduct = async ()=>{
       try {
         const {data} = await axios.get('/product/all')
-        console.log(data.allProducts)
         if (data.success) {
           setProduct(data.allProducts)
         }else{
@@ -126,8 +125,8 @@ const Context = ({children}) => {
   )
 }
 
+export default Context
+
 export const useAppContext = ()=>{
     return useContext(AppContext)
 }
-
-export default Context

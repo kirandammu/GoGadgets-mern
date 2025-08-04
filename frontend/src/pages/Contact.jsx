@@ -17,7 +17,7 @@ const Contact = () => {
           <p className='uppercase text-2xl font-semibold'>Details</p>
           <p>531162 Visakhapatnam <br />Andhra Prdesh, India.</p>
           <p>Mobile: +91 939 020 516 <br />dammukiran4@gmail.com</p>
-          <h2 className='text-xl font-semibold pt-3'>Careers at Forever</h2>
+          <h2 className='text-xl font-semibold pt-3'>Careers at Go Gadgets</h2>
           <p>Learn more about our teams and job openings.</p>
           <h4 className='py-4 rounded cursor-pointer bg-black text-white flex items-center justify-center w-60'>Explore Jobs</h4>
         </div>

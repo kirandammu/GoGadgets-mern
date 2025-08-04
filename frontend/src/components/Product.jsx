@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import {useAppContext} from '../context/Context'
 import { assets } from '../assets/assets';
 import Item from '../components/Item'
 import { AiOutlineLoading } from "react-icons/ai";
 import Products from '../pages/Products';
+import useAppStore from '../context/Zustand';
 
 const Product = () => {
 
     const {id} = useParams()
-    const {product, navigate, addToCart} = useAppContext()
+    const navigate = useNavigate()
+    const {product, addToCart} = useAppStore()
     const [thumbnail, setThumbnail] = useState(null);
     const [related, setRelated] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -19,7 +21,8 @@ const Product = () => {
     useEffect(() => {
         if (product.length>0) {
           let productCopy = product.slice()
-            productCopy = productCopy.filter((item)=>pro.category === item.category)
+            productCopy = productCopy.filter((item)=>item.category?.[0] == pro.category)
+
             setRelated(productCopy.slice(0,5))
           setThumbnail(pro.images?.[0] || null);
         }
@@ -66,7 +69,7 @@ const Product = () => {
                                 <img src={i<3 ? assets.star_icon : assets.star_dull_icon} className='w-4' key={i} />
                             
                         ))}
-                        <p className="text-sm text-gray-500 ml-2 ">412</p>
+                        <p className="text-sm text-gray-500 ml-2 ">{Math.floor(Math.random()*1000)} reviews</p>
                     </div>
 
                     <div className="mt-6">
@@ -98,7 +101,7 @@ const Product = () => {
         <div className='font-semibold text-2xl uppercase text-black'>Related <span className='text-gray-400'>Products</span></div>
         <span className='w-26 h-0.5 bg-black'></span>        
       </div>
-      <div className='flex justify-between'>{
+      <div className='grid grid-cols-5'>{
             related.map((pro,i)=>{
                 return(
                 <Item key={i} product={pro}/>

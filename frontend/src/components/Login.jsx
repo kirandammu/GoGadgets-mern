@@ -1,11 +1,11 @@
 import React from 'react'
-import { useAppContext } from '../context/Context';
 import toast from 'react-hot-toast';
 import { useEffect } from 'react';
+import useAppStore from '../context/Zustand';
 
 const Login = () => {
 
-    const {setShowUser, setUser, axios} = useAppContext()
+    const {setShowUser, setUser, axios} = useAppStore()
 
     const [state, setState] = React.useState("login");
     const [name, setName] = React.useState("");
@@ -21,11 +21,7 @@ const Login = () => {
             name, 
             email, 
             password 
-        },  {
-    headers: { 'Content-Type': 'application/json' }
-        });
-
-        // More robust response handling
+        })
         if (data?.success) {
             toast.success(data.message || "Operation successful");
             setUser(data.user);
@@ -35,18 +31,9 @@ const Login = () => {
         }
 
     } catch (error) {
-        // Proper Axios error handling
-        const errorMessage = error.response?.data?.message || 
-                            error.message || 
-                            "An unknown error occurred";
+        console.log(error.message)
+        toast.error(error.message)
         
-        toast.error(errorMessage);
-        console.error("Submission error:", error);
-        
-        // Optional: Handle specific error cases
-        if (error.response?.status === 401) {
-            // Handle unauthorized access
-        }
     }
 };
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Item from '../components/Item'
-import { useAppContext } from '../context/Context'
+import useAppStore from '../context/Zustand'
 
 const Products = () => {
-    const {product, search} = useAppContext()
+    const {product, search} = useAppStore()
     const [filterProducts, setFilterProducts] = useState([])
 
     useEffect(()=>{

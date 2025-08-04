@@ -4,7 +4,6 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import connectDB from './config/db.js'
 import userRoute from './routes/userRoute.js'
-import sellerRoute from './routes/sellerRoute.js'
 import productRoute from './routes/productRoute.js'
 import cloudinaryConnect from './config/cloudinary.js'
 import addressRoute from './routes/addressRoute.js'
@@ -24,7 +23,7 @@ cloudinaryConnect()
 
 //routes
 app.use('/user', userRoute)
-app.use('/seller', sellerRoute)
+// app.use('/seller', sellerRoute)
 app.use('/product', productRoute)
 app.use('/address', addressRoute)
 

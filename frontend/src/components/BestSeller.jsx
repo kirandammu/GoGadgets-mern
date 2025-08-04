@@ -1,10 +1,10 @@
 import React from 'react'
-import { useAppContext } from '../context/Context'
 import Item from './Item'
+import useAppStore from '../context/Zustand'
 
 const BestSeller = () => {
 
-  const {product} = useAppContext()
+  const {product} = useAppStore()
   return (
     <div>
         <div className='flex items-end flex-col mx-auto w-60 py-8'>

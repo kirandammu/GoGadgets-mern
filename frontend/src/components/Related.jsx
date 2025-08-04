@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import Item from '../components/Item'
-import {useAppContext} from '../context/Context'
+import useAppStore from '../context/Zustand'
 
 const Related = ({category}) => {
+    console.log(category)
 
     const [related,setRelated] = useState([])
-    const {product} = useAppContext()
+    const {product} = useAppStore()
+        console.log(product)
+
 
    useEffect(()=>{
     let productCopy = product.slice();
+    console.log(productCopy)
 
     if(product.length>0){
-        productCopy = productCopy.filter(item=>category === item.category)
-
+        for (let i = 0; i < product.length; i++) {
+        productCopy = productCopy.filter((item)=>category === item?.category)
         setRelated(productCopy.slice(0,5))
-        
+    }
     }
    },[product])
 

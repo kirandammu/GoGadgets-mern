@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { useAppContext } from '../../context/Context';
 import { assets } from '../../assets/assets';
 import toast from 'react-hot-toast';
+import useAppStore from '../../context/Zustand';
 
 const ProductList = () => {
 
-    const {product, axios, fetchProduct} = useAppContext()
+    const {product, axios, fetchProduct} = useAppStore()
 
     useEffect(()=>{
         

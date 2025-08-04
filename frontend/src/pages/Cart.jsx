@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import { assets } from '../assets/assets'
-import { useAppContext } from '../context/Context'
 import { useEffect } from 'react'
+import useAppStore from '../context/Zustand'
 
 const Cart = () => {
 
-    const {navigate, product, cartItems, removeCart, updateCart} = useAppContext()
+    const {navigate, product, cartItems, removeCart, updateCart} = useAppStore()
 
 
     const [cartArray, setCartArray] = useState([])
@@ -30,7 +30,7 @@ const Cart = () => {
         <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
             <div className='flex-1 max-w-4xl'>
                 <h1 className="text-3xl font-medium mb-6">
-                    Shopping Cart <span className="text-sm text-[blue]">{getCartCount()}</span>
+                    {/* Shopping Cart <span className="text-sm text-[blue]">{getCart()}</span> */}
                 </h1>
 
                 <div className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 text-base font-medium pb-3">
@@ -60,7 +60,7 @@ const Cart = () => {
                                 </div>
                             </div>
                         </div>
-                        <p className="text-center">${product.offerPrice * product.quantity}</p>
+                        <p className="text-center">₹{product.offerPrice * product.quantity}</p>
                         <button className="cursor-pointer mx-auto">
                            <img src={assets.remove_icon} alt="" />
                         </button>
@@ -109,16 +109,16 @@ const Cart = () => {
 
                 <div className="text-gray-500 mt-4 space-y-2">
                     <p className="flex justify-between">
-                        <span>Price</span><span>$20</span>
+                        <span>Price</span><span>₹20</span>
                     </p>
                     <p className="flex justify-between">
                         <span>Shipping Fee</span><span className="text-green-600">Free</span>
                     </p>
                     <p className="flex justify-between">
-                        <span>Tax (2%)</span><span>$20</span>
+                        <span>Tax (2%)</span><span>₹20</span>
                     </p>
                     <p className="flex justify-between text-lg font-medium mt-3">
-                        <span>Total Amount:</span><span>$20</span>
+                        <span>Total Amount:</span><span>₹20</span>
                     </p>
                 </div>
 

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { assets, categories } from '../../assets/assets';
-import { useAppContext } from '../../context/Context';
 import toast from 'react-hot-toast';
+import useAppStore from '../../context/Zustand';
+import { AiOutlineLoading } from 'react-icons/ai';
 
 const AddProduct = () => {
-    const { axios } = useAppContext()
+    const { axios } = useAppStore()
     const [files, setFiles] = useState([])
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -101,10 +102,10 @@ const AddProduct = () => {
                 </div>
                 <button 
                     type="submit" 
-                    className="px-12 py-2.5 cursor-pointer bg-black text-white font-medium rounded"
+                    className="px-12 py-1.5 cursor-pointer bg-black text-white font-medium rounded"
                     disabled={isSubmitting}
                 >
-                    {isSubmitting ? 'Adding...' : 'ADD'}
+                    {isSubmitting ? <AiOutlineLoading className='text-xl font-bold animate-spin'/>: 'ADD'}
                 </button>
             </form>
         </div>

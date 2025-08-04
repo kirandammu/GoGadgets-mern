@@ -21,12 +21,15 @@ import trust_icon from "./trust_icon.svg";
 import black_arrow_icon from "./black_arrow_icon.svg";
 import white_arrow_icon from "./white_arrow_icon.svg";
 import add_address_iamge from "./add_address_image.svg";
+import jbl_soundbox_image from "./jbl_soundbox_image.png";
+import md_controller_image from "./md_controller_image.png";
+
+
 import contact from './contact_img.png'
 
 import banner2 from './Banner-2.jpg'
 import banner3 from './mobile.jpg'
 import banner4 from './watch.jpg'
-import banner5 from './ba3.jpg'
 import ba1 from './2.jpg'
 import ba2 from './6.jpg'
 import ba3 from './8.jpg'
@@ -60,10 +63,13 @@ export const assets = {
   white_arrow_icon,
   add_address_iamge,
   box_icon,
-  contact
+  contact,
+  jbl_soundbox_image,
+  md_controller_image 
+
 };
 
- export const images = [banner2, banner3, banner4, banner5]
+ export const images = [banner2, banner3, banner4]
 
 export const categories = [
   {

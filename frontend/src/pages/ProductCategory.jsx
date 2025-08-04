@@ -1,12 +1,12 @@
 import React from 'react'
-import {useAppContext} from '../context/Context'
 import {categories} from '../assets/assets'
 import { useParams } from 'react-router-dom'
 import Item from '../components/Item'
+import useAppStore from '../context/Zustand'
 
 const ProductCategory = () => {
 
-    const {product} = useAppContext()
+    const {product} = useAppStore()
     const {category} = useParams()
 
     const searchCategory = categories.find((item)=>item.path.toLowerCase()=== category)
