@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:4500'
+axios.defaults.baseURL = 'https://gogadgets-mern-server.onrender.com/'
 axios.defaults.withCredentials = true
 
 const useAppStore = create((set, get) => ({
