@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:4500'
+axios.defaults.baseURL = 'https://gogadgets-mern.onrender.com' || 'http://localhost:4500'
 axios.defaults.withCredentials = true
 
 // const api = axios.create({
