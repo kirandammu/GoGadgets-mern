@@ -10,7 +10,7 @@ import addressRoute from './routes/addressRoute.js'
 
 
 const app = express()
-const port = 4500
+const port = 'https://go-gadgets-mern.vercel.app'
 
 //middlewares
 app.use(express.json())
